@@ -1,6 +1,5 @@
-import { TinyZodClientProps } from '../interface';
 /** log info to console */
-export function logger(client: TinyZodClientProps, message: string | any) {
-  if (client.showLogs) console.log(message);
+export function logger(showLogs: boolean | undefined, message: string | any) {
+  if (showLogs === true) console.log(message);
   return message;
 }

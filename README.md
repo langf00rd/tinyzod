@@ -4,6 +4,8 @@
 </div>
 
 - typesafe
+- tiny package size
+- tree shakable
 - in-built support for zod (support for other validation libraries coming in soon...)
 - other cool stuff coming in...
 

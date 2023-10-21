@@ -1,6 +1,6 @@
 import { TinyZodClientProps } from '../interface';
 
-export class TinyZodClient {
+export default class TinyZodClient {
   apiKey: string;
   showLogs: boolean;
   constructor({ apiKey, showLogs }: TinyZodClientProps) {

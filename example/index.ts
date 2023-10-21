@@ -1,27 +1,46 @@
 import { z } from 'zod';
-import { TinyZodClient, publish } from '../dist/';
+import { TinyZodClient, fetchEvents, publish } from '../dist/';
 
 const tz = new TinyZodClient({
-  apiKey: 'tinybird-api-key',
+  showLogs: true,
+  apiKey: 'your-api-key-here',
 });
 
 const schema = z.object({
-  name: z.string(),
-  age: z.number(),
+  timestamp: z.string(),
+  id: z.string(),
 });
 
-const sendEvent = async () => {
+const publish_ = async () => {
   try {
     const response = await publish({
-      client: tz,
-      dataSource: 'page_views__v1',
-      data: { name: 'john doe', age: 18 },
       schema,
+      client: tz,
+      query: 'mode=append',
+      dataSource: 'page_views__v1',
+      data: {
+        id: Date.now().toString(),
+        timestamp: '2013-03-15 10:39:35',
+      },
     });
-    console.log(response);
+    console.log(response.response);
   } catch (error) {
     console.log(error);
   }
 };
 
-sendEvent();
+const fetchEvents_ = async () => {
+  try {
+    const response = await fetchEvents({
+      client: tz,
+      pipe: 'get_page_views__v1',
+      query: 'site=demo',
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+publish_();
+fetchEvents_();
