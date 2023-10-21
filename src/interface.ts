@@ -1,14 +1,14 @@
 import { ZodSchema } from 'zod';
 
-interface TinyZodClientProps {
+export interface TinyZodClientProps {
   /** your tinybird api key */
-  apiKey: string;
+  token: string;
 
   /** to show or hide logs */
   showLogs?: boolean;
 }
 
-interface TinyZodFetchEventProps {
+export interface TinyZodFetchEventProps {
   /** tinyzod client */
   client: TinyZodClientProps;
 
@@ -19,7 +19,7 @@ interface TinyZodFetchEventProps {
   pipe: string;
 }
 
-interface TinyZodPublishProps {
+export interface TinyZodPublishProps {
   /** tinyzod client */
   client: TinyZodClientProps;
 
@@ -35,5 +35,3 @@ interface TinyZodPublishProps {
   /** schema to validate data */
   schema: ZodSchema;
 }
-
-export { TinyZodClientProps, TinyZodPublishProps, TinyZodFetchEventProps };

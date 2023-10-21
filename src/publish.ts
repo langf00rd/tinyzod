@@ -1,7 +1,7 @@
-import { TinyZodPublishProps } from '../interface';
-import { TINYBIRD_API_BASE_URL } from './constants';
-import { formatPayload } from './formatPayload';
-import { logger } from './logger';
+import { TinyZodPublishProps } from './interface';
+import { TINYBIRD_API_BASE_URL } from './lib/constants';
+import { formatPayload } from './utils/formatPayload';
+import { logger } from './utils/logger';
 
 /** publishes an event to tinybird */
 export default async function publish({
@@ -11,20 +11,17 @@ export default async function publish({
   dataSource,
   query,
 }: TinyZodPublishProps) {
-  logger(client.showLogs, 'publishing to tinybird');
   const parsedData = schema.safeParse(data);
+  if (!client.token) throw { error: 'invalid client token' };
   if (!parsedData.success) throw { error: parsedData.error.issues };
-  if (!client.apiKey.trim()) {
-    throw { error: 'invalid tinybird api key' };
-  }
-
   try {
+    logger(client.showLogs, `publishing to ${dataSource}`);
     const response = await fetch(
       `${TINYBIRD_API_BASE_URL}v0/datasources?name=${dataSource}&${query}`,
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${client.apiKey}`,
+          Authorization: `Bearer ${client.token}`,
           'Content-Type': 'application/plain',
         },
         body: formatPayload(parsedData.data),

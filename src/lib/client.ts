@@ -1,10 +1,10 @@
 import { TinyZodClientProps } from '../interface';
 
 export default class TinyZodClient {
-  apiKey: string;
+  token: string;
   showLogs: boolean;
-  constructor({ apiKey, showLogs }: TinyZodClientProps) {
-    this.apiKey = apiKey;
+  constructor({ token, showLogs }: TinyZodClientProps) {
+    this.token = token;
     this.showLogs = showLogs ?? false;
   }
 }

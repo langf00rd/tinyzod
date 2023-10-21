@@ -3,12 +3,14 @@ import { TinyZodClient, fetchEvents, publish } from '../dist/';
 
 const tz = new TinyZodClient({
   showLogs: true,
-  apiKey: 'your-api-key-here',
+  token: 'TINYBIRD-TOKEN',
 });
 
 const schema = z.object({
-  timestamp: z.string(),
-  id: z.string(),
+  id: z.number(),
+  value: z.string(),
+  date: z.string(),
+  message: z.string(),
 });
 
 const publish_ = async () => {
@@ -17,10 +19,12 @@ const publish_ = async () => {
       schema,
       client: tz,
       query: 'mode=append',
-      dataSource: 'page_views__v1',
+      dataSource: 'demo__v1',
       data: {
-        id: Date.now().toString(),
-        timestamp: '2013-03-15 10:39:35',
+        id: Date.now(),
+        value: Math.floor(Math.random() * 11).toString(),
+        date: Date().substring(0, 21),
+        message: 'hello world',
       },
     });
     console.log(response.response);
@@ -33,8 +37,8 @@ const fetchEvents_ = async () => {
   try {
     const response = await fetchEvents({
       client: tz,
-      pipe: 'get_page_views__v1',
-      query: 'site=demo',
+      pipe: 'demo_pipe__v1',
+      query: 'column_01=8',
     });
     console.log(response.data);
   } catch (error) {
