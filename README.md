@@ -4,23 +4,35 @@
 </div>
 
 - typesafe
-- tiny package size
 - tree shakable
+- tiny size | < 60kb
 - in-built support for zod (support for other validation libraries coming in soon...)
 - other cool stuff coming in...
 
 ```ts
 import { z } from 'zod';
-import { TinyZodClient, publish } from 'tinyzod';
+import { TinyZodClient, publish, fetchEvents } from 'tinyzod';
 
+// initialize the tinyzod client with your tinybird token
 const tz = new TinyZodClient({
-  apiKey: 'your-tinybird-api-key',
+  token: 'TINYBIRD-TOKEN',
+  /* other client config */
 });
 
+// publish an event
 const response = await publish({
   client: tz,
-  dataSource: 'page_views__v1',
-  data: { name: 'john doe', age: 18 },
-  schema: 'your-zod-schema',
+  dataSource: 'DATASOURCE-NAME',
+  schema: 'ZOD-SCHEMA',
+  data: {
+    /* object to be published to tinybird */
+  },
+});
+
+// fetch events from a pipe
+const events = await fetchEvents({
+  client: tz,
+  pipe: 'PIPE-NAME',
+  query: 'some_field=value',
 });
 ```
