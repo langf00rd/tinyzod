@@ -1,20 +1,21 @@
 import { z } from 'zod';
-import { TinyZodClient, send } from './packages/tinyzod';
+import { TinyZodClient, publish } from '../dist/';
 
-const tb = new TinyZodClient({
-  apiKey: 'p.123GT3RS',
-  showLogs: true,
+const tz = new TinyZodClient({
+  apiKey: 'tinybird-api-key',
 });
 
-const schema = z.object({ id: z.string(), age: z.number() });
+const schema = z.object({
+  name: z.string(),
+  age: z.number(),
+});
 
 const sendEvent = async () => {
   try {
-    const response = await send({
-      client: tb,
-      data: { id: '121dasd123', age: 18 },
+    const response = await publish({
+      client: tz,
       dataSource: 'page_views__v1',
-      query: 'mode=append',
+      data: { name: 'john doe', age: 18 },
       schema,
     });
     console.log(response);

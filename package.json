@@ -12,8 +12,9 @@
   },
   "scripts": {
     "start": "tsdx watch",
+    "start:example": "tsc example/index.ts --watch",
     "build": "tsdx build",
-    "prepare": "yarn build && yarn size && cp -r dist/ example/packages/tinyzod",
+    "prepare": "yarn build && yarn size",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },

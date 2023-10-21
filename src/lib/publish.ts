@@ -3,7 +3,7 @@ import { TINYBIRD_API_BASE_URL } from './constants';
 import { logger } from './logger';
 
 /** sends an event to tinybird */
-export async function send({
+export async function publish({
   client,
   schema,
   data,

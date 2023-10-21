@@ -1,4 +1,4 @@
-import { TinyZodClientProps } from './interface';
+import { TinyZodClientProps } from '../interface';
 
 export class TinyZodClient {
   apiKey: string;

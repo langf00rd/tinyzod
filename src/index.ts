@@ -1,3 +1,3 @@
-import { TinyZodClient } from './client';
-import { send } from './lib/send';
-export { TinyZodClient, send };
+import { TinyZodClient } from './lib/client';
+import { publish } from './lib/publish';
+export { TinyZodClient, publish };
