@@ -16,7 +16,7 @@ export async function send({
   logger(client, 'sending data to tinybird...');
 
   const parsedData = schema.safeParse(data);
-  if (!parsedData.success) throw { error: parsedData.error };
+  if (!parsedData.success) throw { error: parsedData.error.issues };
 
   try {
     const response = await fetch(

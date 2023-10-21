@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "prepare": "yarn build && yarn size",
+    "prepare": "yarn build && yarn size && cp -r dist/ example/packages/tinyzod",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },

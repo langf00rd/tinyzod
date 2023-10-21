@@ -1,0 +1,11 @@
+{
+  "name": "tinyzod-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc index.ts && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "langf00rd"
+}
