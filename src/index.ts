@@ -1,3 +1,3 @@
-export const greeting = () => {
-  return 'hello';
-};
+import { TinyZodClient } from './client';
+import { send } from './lib/send';
+export { TinyZodClient, send };
