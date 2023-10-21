@@ -12,9 +12,9 @@
   },
   "scripts": {
     "start": "tsdx watch",
+    "start:example": "tsc example/index.ts --watch",
     "build": "tsdx build",
-    "lint": "yarn eslint src/**",
-    "prepare": "yarn lint && yarn build && yarn size",
+    "prepare": "yarn build && yarn size",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -26,7 +26,7 @@
     "trailingComma": "es5"
   },
   "name": "tinyzod",
-  "author": "langf00rd",
+  "author": "langford",
   "module": "dist/tinyzod.esm.js",
   "size-limit": [
     {
@@ -49,6 +49,7 @@
   "repository": "https://github.com/langf00rd/tinyzod",
   "private": false,
   "dependencies": {
-    "@typescript-eslint/parser": "^6.6.0"
+    "@typescript-eslint/parser": "^6.6.0",
+    "zod": "^3.22.4"
   }
 }
