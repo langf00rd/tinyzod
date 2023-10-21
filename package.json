@@ -1,0 +1,54 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "yarn eslint src/**",
+    "prepare": "yarn lint && yarn build && yarn size",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "tinyzod",
+  "author": "langf00rd",
+  "module": "dist/tinyzod.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/tinyzod.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/tinyzod.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^9.0.0",
+    "husky": "^8.0.3",
+    "size-limit": "^9.0.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "repository": "https://github.com/langf00rd/tinyzod",
+  "private": false,
+  "dependencies": {
+    "@typescript-eslint/parser": "^6.6.0"
+  }
+}
