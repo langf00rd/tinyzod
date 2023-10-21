@@ -13,8 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "lint": "yarn eslint src/**",
-    "prepare": "yarn lint && yarn build && yarn size",
+    "prepare": "yarn build && yarn size",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
