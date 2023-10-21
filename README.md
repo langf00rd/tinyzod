@@ -8,6 +8,9 @@
 - other cool stuff coming in...
 
 ```ts
+import { z } from 'zod';
+import { TinyZodClient, publish } from 'tinyzod';
+
 const tz = new TinyZodClient({
   apiKey: 'your-tinybird-api-key',
 });
