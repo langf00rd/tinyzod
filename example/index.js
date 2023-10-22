@@ -60,6 +60,7 @@ var publish_ = function () { return __awaiter(void 0, void 0, void 0, function (
                         datasource: 'demo__v1',
                         validator: 'zod',
                         mode: 'append',
+                        tbSchema: 'schema=symbol String, date Date, close Float32',
                         data: {
                             id: Date.now(),
                             value: Math.floor(Math.random() * 11).toString(),

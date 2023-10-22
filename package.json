@@ -49,6 +49,7 @@
   "repository": "https://github.com/langf00rd/tinyzod",
   "private": false,
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "@typescript-eslint/parser": "^6.6.0",
     "zod": "^3.22.4"
   }

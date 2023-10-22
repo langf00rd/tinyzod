@@ -21,6 +21,7 @@ const publish_ = async () => {
       datasource: 'demo__v1',
       validator: 'zod',
       mode: 'append',
+      tbSchema: 'schema=symbol String, date Date, close Float32',
       data: {
         id: Date.now(),
         value: Math.floor(Math.random() * 11).toString(),
