@@ -1,9 +1,14 @@
 import { z } from 'zod';
-import { TinyZodClient, publishToDatasource } from '../dist/';
+import {
+  TinyZodClient,
+  publishToDatasource,
+  queryPipeWithDynamicParam,
+} from '../dist/';
 
 const tz = new TinyZodClient({
   showLogs: true,
-  token: 'TINYBIRD-TOKEN',
+  token:
+    'p.eyJ1IjogIjMxZWQyYjg5LTI3ZjUtNDg0Zi1hOTQxLTJmZThiZGRjOGJmOSIsICJpZCI6ICIzNWQwMzI3ZC0zZmNlLTRjMzUtOTM1Yy00MGFhMTAwYTBkZmMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vqj62erNH7RfMww6VHXy5M4ubxiYWt431Ca7fR2VRq4',
 });
 
 const schema = z.object({
@@ -21,7 +26,6 @@ const publish_ = async () => {
       datasource: 'demo__v1',
       validator: 'zod',
       mode: 'append',
-      tbSchema: 'schema=symbol String, date Date, close Float32',
       data: {
         id: Date.now(),
         value: Math.floor(Math.random() * 11).toString(),
@@ -35,18 +39,18 @@ const publish_ = async () => {
   }
 };
 
-// const fetchEvents_ = async () => {
-//   try {
-//     const response = await fetchEvents({
-//       client: tz,
-//       pipe: 'demo_pipe__v1',
-//       query: 'column_01=8',
-//     });
-//     console.log(response.data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+const query_ = async () => {
+  try {
+    const response = await queryPipeWithDynamicParam({
+      client: tz,
+      pipe: 'demo_pipe__v1',
+      query: 'column_01=8',
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 publish_();
-// fetchEvents_();
+query_();

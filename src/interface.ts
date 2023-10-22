@@ -16,14 +16,14 @@ export interface TinyZodClientProps {
   revalidate?: number;
 }
 
-export interface TinyZodFetchEventProps {
+export interface TinyZodQueryPipeWithDynamicParamsProps {
   /** tinyzod client */
   client: TinyZodClient;
 
-  /** other queries (refer to https://www.tinybird.co/docs/api-reference/datasource-api.html) */
+  /** query (refer to https://www.tinybird.co/docs/api-reference/pipe-api.html#) */
   query?: string;
 
-  /** pipe to query. eg `get_page_views__v1` (refer to https://www.tinybird.co/docs/api-reference/datasource-api.html) */
+  /** pipe to query. eg `get_page_views__v1` (refer to https://www.tinybird.co/docs/api-reference/pipe-api.html#) */
   pipe: string;
 }
 
@@ -78,4 +78,11 @@ export interface TinybirdDatesourcePublishResponse {
   quarantine_rows: number;
   invalid_lines: number;
   error: boolean;
+}
+
+export interface TinyBirdPipeWithDynamicParamResponse {
+  meta: { name: string; type: string }[];
+  data: Record<any, any>[];
+  rows: number;
+  statistics: { elapsed: number; rows_read: number; bytes_read: number };
 }

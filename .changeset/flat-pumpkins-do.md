@@ -2,9 +2,29 @@
 'tinyzod': major
 ---
 
+## querying a pipe with dynamic parameter(s)
+
+for pipes with dynamic parameter(s) where you want to run an SQL query like `% SELECT * FROM demo__v1 WHERE column_01 = {{ Int16(column_01, required=True) }}`. tinyzod simplifies it as follows:
+
+```ts
+import { TinyZodClient, queryPipeWithDynamicParam } from 'tinyzod';
+
+const tz = new TinyZodClient({
+  showLogs: true,
+  token: 'TINYBIRD-TOKEN',
+  /* other config */
+});
+
+const query_ = await queryPipeWithDynamicParam({
+  client: tz,
+  pipe: 'demo_pipe__v1',
+  query: 'column_01=8',
+});
+```
+
 ## publishing data to tinybird datasource
 
-you can publish data to a tinybird datasource with the `publishToDatasource()`. See example below:
+you can publish an event to a tinybird datasource with the `publishToDatasource()` function. See example below:
 
 ```ts
 import { z } from 'zod';
@@ -13,6 +33,7 @@ import { TinyZodClient, publishToDatasource } from 'tinyzod';
 const tz = new TinyZodClient({
   showLogs: true,
   token: 'TINYBIRD-TOKEN',
+  /* other config */
 });
 
 const schema = z.object({
@@ -22,18 +43,12 @@ const schema = z.object({
   message: z.string(),
 });
 
-const response = await publishToDatasource({
-  schema,
+const publish_ = await publishToDatasource({
   client: tz,
   datasource: 'demo__v1',
-  validator: 'zod',
   mode: 'append',
-  tbSchema: 'schema=symbol String, date Date, close Float32',
   data: {
-    id: Date.now(),
-    value: Math.floor(Math.random() * 11).toString(),
-    date: Date().substring(0, 21),
-    message: 'hi mom!',
+    /* some data */
   },
 });
 ```
