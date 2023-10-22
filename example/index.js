@@ -40,7 +40,7 @@ var zod_1 = require("zod");
 var dist_1 = require("../dist/");
 var tz = new dist_1.TinyZodClient({
     showLogs: true,
-    token: 'p.eyJ1IjogIjMxZWQyYjg5LTI3ZjUtNDg0Zi1hOTQxLTJmZThiZGRjOGJmOSIsICJpZCI6ICIzNWQwMzI3ZC0zZmNlLTRjMzUtOTM1Yy00MGFhMTAwYTBkZmMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vqj62erNH7RfMww6VHXy5M4ubxiYWt431Ca7fR2VRq4',
+    token: 'p.eyJ1IjogIjMxZWQyYjg5LTI3ZjUtNDg0Zi1hOTQxLTJmZThiZGRjOGJmOSIsICJpZCI6ICIzNWQwMzI3ZC0zZmNlLTRjMzUtOTM1Yy00MGFhMTAwYTBkZmMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vqj62erNH7RfMww6VHXy5M4ubxiYWt431Ca7fR2VRq4', // test tinybird token
 });
 var schema = zod_1.z.object({
     id: zod_1.z.number(),

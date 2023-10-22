@@ -8,7 +8,7 @@ import {
 const tz = new TinyZodClient({
   showLogs: true,
   token:
-    'p.eyJ1IjogIjMxZWQyYjg5LTI3ZjUtNDg0Zi1hOTQxLTJmZThiZGRjOGJmOSIsICJpZCI6ICIzNWQwMzI3ZC0zZmNlLTRjMzUtOTM1Yy00MGFhMTAwYTBkZmMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vqj62erNH7RfMww6VHXy5M4ubxiYWt431Ca7fR2VRq4',
+    'p.eyJ1IjogIjMxZWQyYjg5LTI3ZjUtNDg0Zi1hOTQxLTJmZThiZGRjOGJmOSIsICJpZCI6ICIzNWQwMzI3ZC0zZmNlLTRjMzUtOTM1Yy00MGFhMTAwYTBkZmMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vqj62erNH7RfMww6VHXy5M4ubxiYWt431Ca7fR2VRq4', // test tinybird token
 });
 
 const schema = z.object({
