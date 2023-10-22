@@ -40,7 +40,7 @@ var zod_1 = require("zod");
 var dist_1 = require("../dist/");
 var tz = new dist_1.TinyZodClient({
     showLogs: true,
-    token: 'TINYBIRD-TOKEN',
+    token: 'p.eyJ1IjogIjMxZWQyYjg5LTI3ZjUtNDg0Zi1hOTQxLTJmZThiZGRjOGJmOSIsICJpZCI6ICIzNWQwMzI3ZC0zZmNlLTRjMzUtOTM1Yy00MGFhMTAwYTBkZmMiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.vqj62erNH7RfMww6VHXy5M4ubxiYWt431Ca7fR2VRq4',
 });
 var schema = zod_1.z.object({
     id: zod_1.z.number(),
@@ -54,21 +54,22 @@ var publish_ = function () { return __awaiter(void 0, void 0, void 0, function (
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, dist_1.publish)({
+                return [4 /*yield*/, (0, dist_1.publishToDatasource)({
                         schema: schema,
                         client: tz,
-                        query: 'mode=append',
-                        dataSource: 'demo__v1',
+                        datasource: 'demo__v1',
+                        validator: 'zod',
+                        mode: 'append',
                         data: {
                             id: Date.now(),
                             value: Math.floor(Math.random() * 11).toString(),
                             date: Date().substring(0, 21),
-                            message: 'hello world',
+                            message: 'hi mom!',
                         },
                     })];
             case 1:
                 response = _a.sent();
-                console.log(response.response);
+                console.log(response);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
@@ -78,20 +79,20 @@ var publish_ = function () { return __awaiter(void 0, void 0, void 0, function (
         }
     });
 }); };
-var fetchEvents_ = function () { return __awaiter(void 0, void 0, void 0, function () {
+var query_ = function () { return __awaiter(void 0, void 0, void 0, function () {
     var response, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, dist_1.fetchEvents)({
+                return [4 /*yield*/, (0, dist_1.queryPipeWithDynamicParam)({
                         client: tz,
                         pipe: 'demo_pipe__v1',
                         query: 'column_01=8',
                     })];
             case 1:
                 response = _a.sent();
-                console.log(response.data);
+                console.log(response);
                 return [3 /*break*/, 3];
             case 2:
                 error_2 = _a.sent();
@@ -102,4 +103,4 @@ var fetchEvents_ = function () { return __awaiter(void 0, void 0, void 0, functi
     });
 }); };
 publish_();
-fetchEvents_();
+query_();
