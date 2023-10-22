@@ -4,7 +4,9 @@
 
 ### Major Changes
 
-- 90adc71: ## querying a pipe with dynamic parameter(s)
+- 90adc71:
+
+  ## querying a pipe with dynamic parameter(s)
 
   for pipes with dynamic parameter(s) where you want to run an SQL query like `% SELECT * FROM demo__v1 WHERE column_01 = {{ Int16(column_01, required=True) }}`. tinyzod simplifies it as follows:
 
@@ -24,7 +26,7 @@
   });
   ```
 
-  ## publishing data to tinybird datasource
+  ## publishing data to a tinybird datasource
 
   you can publish an event to a tinybird datasource with the `publishToDatasource()` function. See example below:
 
