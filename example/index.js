@@ -54,21 +54,22 @@ var publish_ = function () { return __awaiter(void 0, void 0, void 0, function (
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, dist_1.publish)({
+                return [4 /*yield*/, (0, dist_1.publishToDatasource)({
                         schema: schema,
                         client: tz,
-                        query: 'mode=append',
-                        dataSource: 'demo__v1',
+                        datasource: 'demo__v1',
+                        validator: 'zod',
+                        mode: 'append',
                         data: {
                             id: Date.now(),
                             value: Math.floor(Math.random() * 11).toString(),
                             date: Date().substring(0, 21),
-                            message: 'hello world',
+                            message: 'hi mom!',
                         },
                     })];
             case 1:
                 response = _a.sent();
-                console.log(response.response);
+                console.log(response);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
@@ -78,28 +79,17 @@ var publish_ = function () { return __awaiter(void 0, void 0, void 0, function (
         }
     });
 }); };
-var fetchEvents_ = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var response, error_2;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, dist_1.fetchEvents)({
-                        client: tz,
-                        pipe: 'demo_pipe__v1',
-                        query: 'column_01=8',
-                    })];
-            case 1:
-                response = _a.sent();
-                console.log(response.data);
-                return [3 /*break*/, 3];
-            case 2:
-                error_2 = _a.sent();
-                console.log(error_2);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
+// const fetchEvents_ = async () => {
+//   try {
+//     const response = await fetchEvents({
+//       client: tz,
+//       pipe: 'demo_pipe__v1',
+//       query: 'column_01=8',
+//     });
+//     console.log(response.data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 publish_();
-fetchEvents_();
+// fetchEvents_();

@@ -1,4 +1,4 @@
 import fetchEvents from './fetchEvents';
 import TinyZodClient from './lib/client';
-import publish from './publish';
-export { TinyZodClient, publish, fetchEvents };
+import publishToDatasource from './publishToDatasource';
+export { TinyZodClient, publishToDatasource, fetchEvents };

@@ -1,7 +1,7 @@
 import { TinyZodFetchEventProps } from './interface';
-import { TINYBIRD_API_BASE_URL } from './lib/constants';
+import { TINYBIRD_API_BASE_URL, TINYBIRD_API_VERSION } from './lib/constants';
 import { logger } from './utils/logger';
-
+/** fetches events from a pipe */
 export default async function fetchEvents({
   client,
   query,
@@ -11,7 +11,7 @@ export default async function fetchEvents({
   try {
     logger(client.showLogs, `querying ${query} from ${pipe}`);
     const response = await fetch(
-      `${TINYBIRD_API_BASE_URL}v0/pipes/${pipe}.json?${query}`,
+      `${TINYBIRD_API_BASE_URL}${TINYBIRD_API_VERSION}/pipes/${pipe}.json?${query}`,
       {
         headers: {
           method: 'GET',
