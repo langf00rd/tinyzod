@@ -1,15 +1,16 @@
 import {
   TinyBirdPipeWithDynamicParamResponse,
-  TinyZodQueryPipeWithDynamicParamsProps,
+  TinyZodqueryDynamicParamsProps,
 } from './interface';
 import { TINYBIRD_API_BASE_URL, TINYBIRD_API_VERSION } from './lib/constants';
 import { logger } from './utils/logger';
-/** fetches events from a pipe */
-export default async function queryPipeWithDynamicParam({
+
+/** queries pipe with a dynamic parameter */
+export default async function queryPipe({
   client,
   query,
   pipe,
-}: TinyZodQueryPipeWithDynamicParamsProps) {
+}: TinyZodqueryDynamicParamsProps) {
   try {
     logger(client.showLogs, `querying for rows matching ${query} from ${pipe}`);
     const response = await fetch(

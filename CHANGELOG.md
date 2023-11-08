@@ -11,15 +11,15 @@
   for pipes with dynamic parameter(s) where you want to run an SQL query like `% SELECT * FROM demo__v1 WHERE column_01 = {{ Int16(column_01, required=True) }}`. tinyzod simplifies it as follows:
 
   ```ts
-  import { TinyZodClient, queryPipeWithDynamicParam } from 'tinyzod';
+  import { TinyzodClient, queryDynamicParam } from 'tinyzod';
 
-  const tz = new TinyZodClient({
+  const tz = new TinyzodClient({
     showLogs: true,
     token: 'TINYBIRD-TOKEN',
     /* other config */
   });
 
-  const query_ = await queryPipeWithDynamicParam({
+  const query_ = await queryDynamicParam({
     client: tz,
     pipe: 'demo_pipe__v1',
     query: 'column_01=8',
@@ -32,9 +32,9 @@
 
   ```ts
   import { z } from 'zod';
-  import { TinyZodClient, publishToDatasource } from 'tinyzod';
+  import { TinyzodClient, publishToDatasource } from 'tinyzod';
 
-  const tz = new TinyZodClient({
+  const tz = new TinyzodClient({
     showLogs: true,
     token: 'TINYBIRD-TOKEN',
     /* other config */

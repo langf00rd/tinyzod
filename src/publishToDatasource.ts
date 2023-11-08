@@ -4,8 +4,9 @@ import {
 } from './interface';
 import { TINYBIRD_API_BASE_URL, TINYBIRD_API_VERSION } from './lib/constants';
 import { logger } from './utils/logger';
-import { validate } from './utils/validate';
-/** publishes an event to a tinybird datasource */
+import validate from './utils/validate';
+
+/** publishes to a datasource */
 export default async function publishToDatasource({
   client,
   schema,
@@ -27,7 +28,7 @@ export default async function publishToDatasource({
           Authorization: `Bearer ${client.token}`,
           'Content-Type': 'application/plain',
         },
-        body: validate(client, schema, data, validator),
+        body: validate(client, schema, data, validator, 'string'),
       }
     );
     return (await response.json()) as TinybirdDatesourcePublishResponse;

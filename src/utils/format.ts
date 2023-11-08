@@ -8,7 +8,7 @@ export function objectToValueString(payload: any) {
   const valuesAsString = values
     .map(value => {
       if (typeof value === 'string')
-        return (value as string).toString().replaceAll(' ', '-');
+        return (value as string).toString().replaceAll(' ', '-'); // separate strings with hyphen. eg: some-random-string
       return value;
     })
     .join(',');

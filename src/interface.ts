@@ -1,8 +1,8 @@
 import { ZodSchema } from 'zod';
-import TinyZodClient from './lib/client';
-import { TinyZodValidator, TinybirdDatesourceMode } from './types';
+import TinyzodClient from './lib/client';
+import { TinyzodValidator, TinybirdDatesourceMode } from './types';
 
-export interface TinyZodClientProps {
+export interface TinyzodClientProps {
   /** your tinybird api key. get from https://www.tinybird.co */
   token: string;
 
@@ -16,11 +16,11 @@ export interface TinyZodClientProps {
   revalidate?: number;
 }
 
-export interface TinyZodQueryPipeWithDynamicParamsProps {
+export interface TinyZodqueryDynamicParamsProps {
   /** tinyzod client */
-  client: TinyZodClient;
+  client: TinyzodClient;
 
-  /** query (refer to https://www.tinybird.co/docs/api-reference/pipe-api.html#) */
+  /** your query. eg `name=john` (refer to https://www.tinybird.co/docs/api-reference/pipe-api.html#) */
   query?: string;
 
   /** pipe to query. eg `get_page_views__v1` (refer to https://www.tinybird.co/docs/api-reference/pipe-api.html#) */
@@ -29,7 +29,7 @@ export interface TinyZodQueryPipeWithDynamicParamsProps {
 
 export interface TinyZodDatasourcePublishProps {
   /** tinyzod client */
-  client: TinyZodClient;
+  client: TinyzodClient;
 
   /** tinybird datasource. `eg page_views__v1` (refer to https://www.tinybird.co/docs/api-reference/datasource-api.html) */
   datasource: string;
@@ -47,7 +47,7 @@ export interface TinyZodDatasourcePublishProps {
   mode: TinybirdDatesourceMode;
 
   /** validator library of choice */
-  validator?: TinyZodValidator;
+  validator?: TinyzodValidator;
 
   /** tinybird schema. eg: "schema=symbol String, date Date, close Float32" */
   tbSchema?: string;
@@ -80,9 +80,31 @@ export interface TinybirdDatesourcePublishResponse {
   error: boolean;
 }
 
+export interface TinybirdEventPublishResponse {
+  successful_rows: number;
+  quarantined_rows: number;
+}
+
 export interface TinyBirdPipeWithDynamicParamResponse {
   meta: { name: string; type: string }[];
   data: Record<any, any>[];
   rows: number;
   statistics: { elapsed: number; rows_read: number; bytes_read: number };
+}
+
+export interface PubilshEventProps {
+  /** tinyzod client */
+  client: TinyzodClient;
+
+  /** event data to be published to tinybird */
+  data: Record<string, any>;
+
+  /** tinybird datasource to receive event data */
+  datasource: string;
+
+  /** schema to validate data */
+  schema?: ZodSchema;
+
+  /** validator library of choice */
+  validator?: TinyzodValidator;
 }

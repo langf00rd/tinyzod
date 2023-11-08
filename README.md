@@ -11,13 +11,9 @@
 
 ```ts
 import { z } from 'zod';
-import {
-  TinyZodClient,
-  publishToDatasource,
-  queryPipeWithDynamicParam,
-} from 'tinyzod';
+import { TinyzodClient, publishToDatasource, queryDynamicParam } from 'tinyzod';
 
-const tz = new TinyZodClient({
+const tz = new TinyzodClient({
   showLogs: true,
   token: 'TINYBIRD-TOKEN',
   /* other config */
@@ -39,7 +35,7 @@ const publish_ = await publishToDatasource({
   },
 });
 
-const query_ = await queryPipeWithDynamicParam({
+const query_ = await queryDynamicParam({
   client: tz,
   pipe: 'demo_pipe__v1',
   query: 'column_01=8',

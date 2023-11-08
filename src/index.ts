@@ -1,4 +1,5 @@
-import queryPipeWithDynamicParam from './queryPipeWithDynamicParam';
-import TinyZodClient from './lib/client';
+import queryPipe from './queryPipe';
+import TinyzodClient from './lib/client';
 import publishToDatasource from './publishToDatasource';
-export { TinyZodClient, publishToDatasource, queryPipeWithDynamicParam };
+import publishEvent from './publishEvent';
+export { TinyzodClient, publishToDatasource, queryPipe, publishEvent };
