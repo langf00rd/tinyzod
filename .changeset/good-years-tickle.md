@@ -1,0 +1,5 @@
+---
+'tinyzod': major
+---
+
+publish event
