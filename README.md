@@ -1,7 +1,4 @@
-<div align="center">
-    <h1 align="center">tinyzod</h1>
-    <p align="center">typesafe tinybird functions with zod</p>
-</div>
+typesafe tinybird functions with zod
 
 - typesafe
 - tree shakable
@@ -11,7 +8,7 @@
 
 ```ts
 import { z } from 'zod';
-import { TinyzodClient, publishToDatasource, queryDynamicParam } from 'tinyzod';
+import { TinyzodClient, publishEvent, queryPipe } from 'tinyzod';
 
 const tz = new TinyzodClient({
   showLogs: true,
@@ -20,24 +17,24 @@ const tz = new TinyzodClient({
 });
 
 const schema = z.object({
-  id: z.number(),
-  value: z.string(),
-  date: z.string(),
-  message: z.string(),
+  data: z.string(),
+  city: z.string(),
 });
 
-const publish_ = await publishToDatasource({
+const response = await publishEvent({
   client: tz,
-  datasource: 'demo__v1',
-  mode: 'append',
+  schema,
+  validator: 'zod',
+  datasource: 'demo_v1',
   data: {
-    /* some data */
+    date: '2020-10-04',
+    city: 'ontario',
   },
 });
 
-const query_ = await queryDynamicParam({
+const query_ = await queryPipe({
   client: tz,
   pipe: 'demo_pipe__v1',
-  query: 'column_01=8',
+  query: 'column_01=value',
 });
 ```

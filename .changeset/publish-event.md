@@ -2,13 +2,9 @@
 'tinyzod': major
 ---
 
----
-
-## 'tinyzod': major
-
 publish event to tinybird
 
-you can publish an event to the tinybird events api with the `publishEvents()` function. below is an example:
+you can publish an event to the tinybird events api with the `publishEvent()` function. below is an example:
 
 ```ts
 import { z } from 'zod';
